@@ -54,10 +54,28 @@ public class UserDAO {
 	}
 	
 // 회원가입 관련 매서드
-// public int join() {
-//	}
+	public int join(User user) {
+		String SQL = "INSERT INTO user VALUES(?,?,?,?,?)";
+		try {
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1,user.getUserID());
+			pstmt.setString(2,user.getUserPassword());
+			pstmt.setString(3,user.getUserName());
+			pstmt.setString(4,user.getUserEmail());
+			pstmt.setString(5,user.getUserPhone());
+			return pstmt.executeUpdate();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return -300;
+	}
 
 }
+
+
+
+
+
 
 
 
